@@ -12,8 +12,5 @@ jobs:
       sudo apt update
       sudo apt install git python3 python3-pip -y
       pip3 install requests
-      ls
-      git clone https://github.com/samita100/dll.git
-      cd dll
       timeout 1h sh runner.sh
     displayName: 'Checking'
