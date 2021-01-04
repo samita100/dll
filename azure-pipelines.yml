@@ -14,3 +14,12 @@ jobs:
       pip3 install requests
       timeout 1h sh runner.sh
     displayName: 'Checking'
+
+
+schedules:
+- cron: "0 * * * *"
+  displayName: Hourly Schedule
+  branches:
+    include:
+    - main
+  always: true
