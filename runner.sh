@@ -1,4 +1,3 @@
-while [ 1 != 0 ]
-do
-python3 check.py
-done
+#!/bin/bash
+
+while true ; do python3 check.py ; done
